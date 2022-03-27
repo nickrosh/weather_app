@@ -1,23 +1,18 @@
 
 
-const Current = () => {
-
-    const fetchCurrent = async () => {
-        const response = await fetch('http://localhost:8000/api/v1/current')
-        const data = await response.json()
-        console.log(data)
-        return data
-      }
-    const weather = fetchCurrent()
-    console.log(JSON.stringify(weather))
+const Current = ({data}) => {
 
     return (
     <section className="bg-light p-5">
         <div className="container">
-           <p>
-               This is stupid
-           </p>
-        </div>
+            <p>Temperature is {data.temp}</p>
+            <p>Humidity is {data.humidity}</p>
+            <p>Pressure is {data.pressure}</p>
+
+            {/* for some reason, this is throwing an error */}
+            {/* <p>Weather is {data.weather[0].main}</p>
+            <p>{data.weather[0].description}</p> */}
+      </div>
     </section>
     )
 }
