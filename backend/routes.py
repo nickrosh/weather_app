@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from backend.weather import weather_request
+from backend.weather import weather_request, current_weather
 
 
 router = APIRouter(
@@ -15,9 +15,9 @@ async def read_root():
 
 @router.get('/current')
 async def get_current():
-    response = await weather_request()
+    response = await current_weather()
     response = response.json()
-    return response['current']
+    return response
 
 
 @router.get('/minutes')
