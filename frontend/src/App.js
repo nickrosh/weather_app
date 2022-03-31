@@ -1,8 +1,10 @@
 import Current from "./components/Current";
 import Header from "./components/Header";
 import {useEffect, useState} from 'react';
+import Precipitation from "./components/Precipitation";
 
 function App() {
+  const [current, setCurrent] = useState([]);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -13,7 +15,7 @@ function App() {
         const response = await fetch(currentUrl);
         const json = await response.json();
         console.log(json);
-        setData({...json})
+        setCurrent({...json})
       } catch(error) {
         console.error(error);
       }
@@ -21,11 +23,32 @@ function App() {
     fetchCurrent()
   }, []);
 
+  useEffect(() => {
+    const minuteUrl = 'http://localhost:8000/api/v1/minutes';
+  
+    const fetchData = async () => {
+      try {
+        const response = await fetch(minuteUrl);
+        const json = await response.json();
+        console.log(json);
+        setData([...json])
+      } catch(error) {
+        console.error(error);
+      }
+    };
+    fetchData()
+  }, []);
+
 
   return (
     <div className="">
       <Header />
-      <Current data={data} />
+      <section className="bg-light p-5">
+        <div className="row g-4">
+          <Current data={current} />
+          <Precipitation data={data} />
+        </div>
+      </section>
 
       {/* Newsletter */}
       <section className="bg-dark text-light p-5">
