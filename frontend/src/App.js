@@ -25,7 +25,6 @@ function App() {
 
   useEffect(() => {
     const minuteUrl = 'http://localhost:8000/api/v1/minutes';
-  
     const fetchData = async () => {
       try {
         const response = await fetch(minuteUrl);

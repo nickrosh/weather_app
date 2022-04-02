@@ -4,15 +4,17 @@ const Current = ({data}) => {
 
     return (
         <div className="col-lg-6 col-md-12">
-            <div className="card-body bg-dark text-light text-center rounded-3">
-                <h3>Temperature is <strong>{data?.main?.temp}&deg;F</strong></h3>
-                <h3>Humidity is <strong>{data?.main?.humidity}%</strong></h3>
+            <div className="card-body bg-dark text-light text-center align-items-center justify-content-center rounded-3 h-100">
+                <div className="d-flex flex-column align-items-center justify-content-evenly h-100">
+                <h1 className="display-3">Temperature: <strong>{data?.main?.temp}&deg;F</strong></h1>
+                <h1 className="display-3">Humidity: <strong>{data?.main?.humidity}%</strong></h1>
 
                 {data?.weather?.map(condition =>
-                <h3 key={condition.id}>
+                <h1 className="display-3" key={condition.id}>
                     <img src={getIconUrl(condition.icon)} alt={condition.main} className="image-fluid"/> {condition.description}
-                </h3>)
+                </h1>)
                 }
+                </div>
             </div>
         </div>
     )

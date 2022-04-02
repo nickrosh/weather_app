@@ -60,7 +60,7 @@ const Precipitation = ({data}) => {
 
     return (
         <div className="col-lg-6 col-md-12">
-            <div className="card-body bg-dark text-light text-center rounded-3">
+            <div className="card-body bg-dark text-light text-center rounded-3 h-100">
                 <Bar data={chartData} options={options}/>
             </div>
         </div>
