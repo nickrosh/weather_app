@@ -10,7 +10,7 @@ const Current = ({data}) => {
 
                 {data?.weather?.map(condition =>
                 <h3 key={condition.id}>
-                    <img src={getIconUrl(condition.icon)} alt={condition.main} className="image-fluid"/> {condition.main}: <br/>{condition.description}
+                    <img src={getIconUrl(condition.icon)} alt={condition.main} className="image-fluid"/> {condition.description}
                 </h3>)
                 }
             </div>
