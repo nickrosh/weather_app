@@ -61,8 +61,6 @@ const Precipitation = ({data}) => {
     return (
         <div className="col-lg-6 col-md-12">
             <div className="card-body bg-dark text-light text-center rounded-3">
-                {/* <h3>Current Time: {convertTimestamp(data[0]?.dt)}</h3>
-                <h3>Chance of Precipitation: {data[0]?.precipitation}%</h3> */}
                 <Bar data={chartData} options={options}/>
             </div>
         </div>
