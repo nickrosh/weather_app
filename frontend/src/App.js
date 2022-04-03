@@ -56,7 +56,7 @@ function App() {
 
 
   return (
-    <div className="">
+    <div className="bg-light">
       <Header />
       <section className="bg-light p-5">
         <div className="row g-4">
@@ -67,9 +67,7 @@ function App() {
 
       {/* Newsletter */}
       <section className="bg-light text-dark p-5">
-        <div className="container">
           <Daily daily={daily}/>
-        </div>
       </section>
 
     </div>
