@@ -2,14 +2,15 @@ import Current from "./components/Current";
 import Header from "./components/Header";
 import {useEffect, useState} from 'react';
 import Precipitation from "./components/Precipitation";
+import Daily from "./components/Daily";
 
 function App() {
   const [current, setCurrent] = useState([]);
   const [data, setData] = useState([]);
+  const [daily, setDaily] = useState([])
 
   useEffect(() => {
     const currentUrl = 'http://localhost:8000/api/v1/current';
-  
     const fetchCurrent = async () => {
       try {
         const response = await fetch(currentUrl);
@@ -38,6 +39,21 @@ function App() {
     fetchData()
   }, []);
 
+  useEffect(() => {
+    const dailyUrl = 'http://localhost:8000/api/v1/daily';
+    const fetchDaily = async () => {
+      try {
+        const response = await fetch(dailyUrl);
+        const json = await response.json();
+        console.log(json);
+        setDaily([...json])
+      } catch(error) {
+        console.error(error);
+      }
+    };
+    fetchDaily()
+  }, []);
+
 
   return (
     <div className="">
@@ -50,16 +66,10 @@ function App() {
       </section>
 
       {/* Newsletter */}
-      <section className="bg-dark text-light p-5">
-          <div className="container">
-              <div className="d-md-flex justify-content-between align-items-center">
-                  <h3 className="mb-3 mb-md-0">Sign up for Newsletter</h3>
-                  <div className="input-group news-input">
-                      <input type="text" className="form-control" placeholder="Enter Email"/>
-                      <button className="btn btn-info btn-lg" type="button">Button</button>
-                    </div>
-              </div>
-          </div>
+      <section className="bg-light text-dark p-5">
+        <div className="container">
+          <Daily daily={daily}/>
+        </div>
       </section>
 
     </div>

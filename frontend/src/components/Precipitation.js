@@ -8,6 +8,7 @@ import {
     Legend,
   } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { convertTimestamp } from '../WeatherService';
 
 
 
@@ -32,15 +33,6 @@ const Precipitation = ({data}) => {
             text: '% Chance of Rain',
           },
         }, 
-    }
-
-    
-    
-
-    const convertTimestamp = (utcTime) => {
-      const milliseconds = utcTime*1000
-      const currentTime = new Date(milliseconds)
-      return currentTime.toLocaleString([], {hour: '2-digit', minute:'2-digit'}) 
     }
     
     const labels = data.map(a => convertTimestamp(a.dt))
