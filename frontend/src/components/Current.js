@@ -8,7 +8,6 @@ const Current = ({data}) => {
                 <div className="d-flex flex-column align-items-center justify-content-evenly h-100">
                 <h1 className="display-1">Temperature: <strong>{data?.main?.temp}&deg;F</strong></h1>
                 <h1 className="display-1">Humidity: <strong>{data?.main?.humidity}%</strong></h1>
-
                 {data?.weather?.map(condition =>
                 <h1 className="display-1" key={condition.id}>
                     <img src={getIconUrl(condition.icon)} alt={condition.main} className="image-fluid"/> {condition.description}
