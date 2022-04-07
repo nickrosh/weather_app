@@ -24,13 +24,14 @@ const Precipitation = ({data}) => {
 
     const options = {
         responsive: true,
+        // maintainAspectRatio: false,
         plugins: {
           legend: {
             position: 'top',
           },
           title: {
             display: true,
-            text: '% Chance of Rain',
+            text: 'Rainfall in Millimeters',
           },
         }, 
     }
@@ -51,7 +52,7 @@ const Precipitation = ({data}) => {
     }
 
     return (
-        <div className="col-lg-6 col-md-12">
+        <div className="col-lg-6 col-md-12 h-100">
             <div className="card-body bg-dark text-light text-center rounded-3 h-100">
                 <Bar data={chartData} options={options}/>
             </div>
